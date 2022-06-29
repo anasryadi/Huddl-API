@@ -5,13 +5,16 @@ const cors = require('cors')
 const logger = require('morgan')
 
 // Connections to controller files
-const friendsController = require('./constrollers/friendsController')
+const friendsController = require('./controllers/friendsController')
 
 // Creating express app
 const app = express();
 
 // Using cors
 app.use(cors())
+
+// Using json
+app.use(express.json())
 
 // Using logger middleware
 app.use(logger('dev'))

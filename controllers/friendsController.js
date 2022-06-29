@@ -34,7 +34,7 @@ router.patch("/:plan", (req, res) => {
 
 // Delete plan /Friends/:plan
 router.delete("/:plan", (req, res) => {
-  Friends.find({ Plan: req.params.dish }).then((plan) => {
+  Friends.find({ Plan: req.params.plan }).then((plan) => {
     const id = plan._id;
     Friends.findByIdAndDelete(id).then(() => res.status(204));
   });

@@ -1,5 +1,5 @@
-const { default: mongoose } = require("mongoose");
-const mongosse = require("../db/connection");
+// const { default: mongoose } = require("mongoose");
+const mongoose = require("../db/connection");
 
 const friendSchema = new mongoose.Schema({
   Activity: String,

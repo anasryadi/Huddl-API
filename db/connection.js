@@ -8,6 +8,6 @@ if (process.env.NODE_ENV === "production") {
   mongoURI = "mongodb://localhost:27017/Huddl";
 }
 
-mongoose.connect(monogoURI);
+mongoose.connect(mongoURI);
 
 module.exports = mongoose;
