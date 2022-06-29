@@ -1,19 +1,16 @@
 // Require dependencies
 const express = require("express");
 const app = express();
-require('dotenv').config()
+require("dotenv").config();
 
 // Connections to controller files
+const friendsController = require('./constrollers/friendsController')
 
 // Defining ports
 app.set("PORT", process.env.PORT || 8080);
 
-// app.get("/", (req, res) => {
-//   console.log("Here");
-//   res.render("index");
-// });
-
-
+// Routes
+app.use('/friends', friendsController)
 
 app.listen(app.get("PORT"), () => {
   console.log(`PORT: ${app.get("PORT")}`);
