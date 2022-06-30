@@ -9,8 +9,8 @@ router.get("/", (req, res) => {
   );
 });
 // Get single plan /friends/:plan
-router.get("/:plan", (req, res) => {
-  Friends.find({ Plan: req.params.plan }).then((plan) =>
+router.get("/:id", (req, res) => {
+  Friends.findById(req.params.id).then((plan) =>
     res.status(200).json({ plan: plan })
   );
 });
@@ -22,22 +22,24 @@ router.post("/", (req, res) => {
 });
 
 // Patch update plan /friends/:plan
-router.patch("/:plan", (req, res) => {
-  Friends.find({ Plan: req.params.plan }).then((plan) => {
-    const id = plan._id;
-    const data = req.body;
-    Friends.findByIdAndUpdate(id, data, { new: true }).then((plan) =>
-      res.status(200).json({ plan: plan })
-    );
-  });
+router.patch("/:id", (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+  Friends.findByIdAndUpdate(id, data, { new: true }).then((plan) =>
+    res.status(200).json({ plan: plan })
+  );
 });
 
 // Delete plan /Friends/:plan
-router.delete("/:plan", (req, res) => {
-  Friends.find({ Plan: req.params.plan }).then((plan) => {
-    const id = plan._id;
-    Friends.findByIdAndDelete(id).then(() => res.status(204));
-  });
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  Friends.findByIdAndDelete(id)
+    .then(() => res.status(204))
+    .then(() => {
+      Friends.find({}).then((items) => {
+        res.status(200).json({ items: items });
+      });
+    });
 });
 
 module.exports = router;
