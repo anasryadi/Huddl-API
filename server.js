@@ -13,6 +13,9 @@ const app = express();
 // Using cors
 app.use(cors())
 
+// using dotenv
+dotenv.config();
+
 // Using json
 app.use(express.json())
 
