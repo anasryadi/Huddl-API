@@ -13,9 +13,6 @@ const app = express();
 // Using cors
 app.use(cors())
 
-// using dotenv
-// dotenv.config({path: '.env'});
-
 // Using json
 app.use(express.json())
 
